@@ -5,8 +5,10 @@ apt-get upgrade -y
 
 apt-get install lxd
 
-lxc storage create SSD dir
-lxc network create brlive0 ipv4.address=10.255.255.254/16 ipv4.address=none
+lxd init
+
+#lxc storage create SSD dir
+#lxc network create brlive0 ipv4.address=10.255.255.254/16 ipv4.address=none
 
 # create proxy
 lxc launch ubuntu:18.04 proxy boot.autostart=true \

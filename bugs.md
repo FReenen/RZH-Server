@@ -13,6 +13,7 @@ no bugs known yet
  - proxy/newsite: check is site already exist
  - proxy: remove and update site
  - dns: add record template
+ - auto setup storage and network bridge
 
 ## for next version
  - add software support for nextcloud, webmail, etc.
