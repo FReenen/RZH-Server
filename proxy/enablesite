@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ln -s /etc/nginx/site-available/$1 /etc/nginx/site-enabled/$1
