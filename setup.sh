@@ -14,7 +14,7 @@ lxd init
 
 echo "Create containers..."
 lxc launch ubuntu:18.04 proxy
-lxc lanch ubuntu:18.04 dns
+lxc launch ubuntu:18.04 dns
 
 echo "Configur Proxy..."
 lxc exec proxy -- apt-get update
