@@ -6,11 +6,11 @@ apt-get upgrade -y
 apt-get install lxd
 
 lxc storage create SSD dir
-#TODO: add IP and NAT.
-lxc network create brlive0
+lxc network create brlive0 ipv4.address=10.255.255.254/16 ipv4.address=none
 
 # create proxy
-lxc launch ubuntu:18.04 proxy
+lxc launch ubuntu:18.04 proxy boot.autostart=true \
+    nictype=bridged parent=brlive0 ipv4.address=10.255.0.1/16
 lxc exec proxy -- apt-get update
 lxc exec proxy -- apt-get upgrade -y
 lxc exec proxy -- apt-get install nginx
@@ -20,7 +20,8 @@ lxc exec proxy -- chmod +x /root/newsite
 lxc exec proxy -- chmod +x /root/enablesite
 
 # create DNS
-lxc lanch ubuntu:18.04 dns
+lxc lanch ubuntu:18.04 dns boot.autostart=true \
+    nictype=bridged parent=brlive0 ipv4.address=10.255.0.11/16
 lxc exec dns -- apt-get update
 lxc exec dns -- apt-get upgrade -y
 lxc exec dns -- apt-get install bind9
