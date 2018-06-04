@@ -1,7 +1,7 @@
 #all bugs and improfments of the installer
 
 ##bugs
-no bugs known yet
+ - can't add static ip addresses to containers
 
 ##maiger improfments
  - add ssl support to nginx
