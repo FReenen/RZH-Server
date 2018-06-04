@@ -1,0 +1,3 @@
+#!/bin/bash
+
+lxc exec web.$1 -- addsite $2

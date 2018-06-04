@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cat > /etc/apache2/site-available/$1.conf <<EOF
+<VirtualHost *:8080>
+  ServerAdmin webmaster@localhost
+  ServerName $1
+  DocumentRoot /var/www/$1
+  <Directory /var/www/>
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    allow from all
+  </Directory>
+</VirtualHost>
+EOF
+
+mkdir /var/www/$1

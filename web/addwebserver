@@ -1,0 +1,8 @@
+#!/bin/bash
+
+lxc lanch ubuntu:18.04 web.$1
+lxc exec web.$1 -- apt-get update
+lxc exec web.$1 -- apt-get upgrade -y
+lxc exec web.$1 -- apt-get isntall apache2
+lxc file push ./src/addsite web.$1/
+lxc exec web.$1 -- echo "listen 8080" | tee /etc/apache2/ports.conf
