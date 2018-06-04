@@ -12,9 +12,11 @@ lxd init
 #lxc storage create SSD dir
 #lxc network create brlive0 ipv4.address=10.255.255.254/16 ipv4.address=none
 
-# create Proxy
-lxc launch ubuntu:18.04 proxy #boot.autostart=true \
-    #nictype=bridged parent=brlive0 ipv4.address=10.255.0.1/16
+echo "Create containers..."
+lxc launch ubuntu:18.04 proxy
+lxc lanch ubuntu:18.04 dns
+
+echo "Configur Proxy..."
 lxc exec proxy -- apt-get update
 lxc exec proxy -- apt-get upgrade -y
 lxc exec proxy -- apt-get install -y nginx
@@ -23,9 +25,7 @@ lxc file puxh ./proxy/enablesite proxy/root/enablesite
 lxc exec proxy -- chmod +x /root/newsite
 lxc exec proxy -- chmod +x /root/enablesite
 
-# create DNS
-lxc lanch ubuntu:18.04 dns #boot.autostart=true \
-    #nictype=bridged parent=brlive0 ipv4.address=10.255.0.11/16
+echo "Configur DNS..."
 lxc exec dns -- apt-get update
 lxc exec dns -- apt-get upgrade -y
 lxc exec dns -- apt-get install -y bind9
