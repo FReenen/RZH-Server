@@ -4,11 +4,9 @@ apt-get update
 apt-get upgrade -y
 
 snap install openscad-plars
-snap install spotify
 snap isntall atom --classic
-snap install kicad-snap
 
-apt-get install x11vnc unzip
+apt-get install -y x11vnc unzip
 
 wget -O novnc.zip https://github.com/novnc/noVNC/archive/v1.0.0.zip
 unzip novnc.zip
@@ -31,10 +29,9 @@ EOF
 cat > /usr/local/applications/openscad.desktop <<EOF
 [Desktop Entry]
 Name=OpenSCAD
-Comment=Opensource CAD software
+Comment=Free Opensource CAD software
 Exec=openscad-plars
 Icon=/snap/openscad-plars/current/icon.png
 Type=Application
 StartupNotify=false
-#Categories=
 EOF
